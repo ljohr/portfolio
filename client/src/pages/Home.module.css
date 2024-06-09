@@ -1,0 +1,63 @@
+* {
+  font-family: "ChiKareGo2", sans-serif;
+}
+
+.homeSection {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+
+  height: 100%;
+
+  width: 100%;
+
+  background: conic-gradient(
+    #ffffff 90deg,
+
+    #000000 90deg 180deg,
+
+    #ffffff 180deg 270deg,
+
+    #000000 270deg
+  );
+
+  background-repeat: repeat;
+
+  background-size: 6px 6px;
+
+  background-position: top left;
+}
+
+.container h2 {
+  font-size: 5rem;
+  margin: 0;
+}
+.container h4 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.iconsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.desktopIcon p {
+  background-color: white;
+  padding: 0 0.4rem;
+}
+
+.desktopIcon img {
+  max-width: 3.5rem;
+}

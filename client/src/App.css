@@ -1,11 +1,15 @@
-.homeSection {
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+@font-face {
+  font-family: "ChiKareGo2";
+  src: url("./assets/ChiKareGo2.woff2") format("woff2"),
+    url("./assets//ChiKareGo2.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-canvas {
-  display: block;
+body,
+#root,
+main {
+  width: 100%;
+  height: 100vh;
 }
