@@ -1,0 +1,63 @@
+/* * {
+  font-family: 'Apple System 1 Light', sans-serif; 
+  font-family: 'ChiKareGo2', sans-serif;
+} */
+
+.homeSection {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0.5%;
+  background-image: url('../assets/finder-tile.jpeg');
+  background-repeat: repeat;
+  background-size: 230px 230px;
+  background-position: left -32px;
+  font-family: 'DePixel', sans-serif;
+}
+
+.container h2 {
+  font-size: 5rem;
+  margin: 0;
+}
+.container h4 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.iconsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'DePixel', sans-serif;
+}
+
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  height: 7.2rem;
+}
+
+
+.desktopIcon img {
+  max-width: 3.5rem;
+}
+
+.iconText {
+  background-color: white;
+  color: black;
+  padding: 0 0.3rem;
+}
+
+.iconTextClicked {
+  background-color: black;
+  color: white;
+  padding: 0 0.3rem;
+}
