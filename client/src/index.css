@@ -51,3 +51,13 @@ button {
   font-style: normal;
   font-display: swap;
 }
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
+}

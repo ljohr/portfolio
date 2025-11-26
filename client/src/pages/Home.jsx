@@ -4,20 +4,47 @@ import styles from "./Home.module.css";
 import MenuBar from "../components/MenuBar";
 import PopUp from "./PopUp";
 import InfoMain from "./InfoMain";
-import floppyDisk from "../assets/floppy-disk.png";
+import Projects from "./Projects";
 import graphIcon from "../assets/graph-icon.png";
 import infoCenterIcon from "../assets/info-center.png";
 
 const Home = () => {
-  const [showPopUp, setShowPopUp] = useState(false);
+  // Track multiple open windows by ID
+  const [openWindows, setOpenWindows] = useState({});
   const [selectedIcon, setSelectedIcon] = useState(null);
 
-  const handleDoubleClick = () => {
-    setShowPopUp(true);
+  // Define icon configurations
+  const iconConfigs = {
+    homeIcon: {
+      id: "homeIcon",
+      component: "InfoMain",
+      title: "Info Center",
+    },
+    algoVisualizerIcon: {
+      id: "algoVisualizerIcon",
+      component: "Projects",
+      title: "Algorithm Visualizer",
+    },
+    algoVisualizerIcon2: {
+      id: "algoVisualizerIcon2",
+      component: "Projects",
+      title: "Algorithm Visualizer",
+    },
   };
 
-  const closePopUp = () => {
-    setShowPopUp(false);
+  const handleDoubleClick = (iconId) => {
+    setOpenWindows((prev) => ({
+      ...prev,
+      [iconId]: true,
+    }));
+  };
+
+  const closePopUp = (iconId) => {
+    setOpenWindows((prev) => {
+      const newWindows = { ...prev };
+      delete newWindows[iconId];
+      return newWindows;
+    });
   };
 
   const handleContainerClick = () => {
@@ -29,12 +56,23 @@ const Home = () => {
     setSelectedIcon(selectedIcon === iconId ? null : iconId);
   };
 
+  const renderWindowContent = (componentName) => {
+    switch (componentName) {
+      case "InfoMain":
+        return <InfoMain />;
+      case "Projects":
+        return <Projects />;
+      default:
+        return <InfoMain />;
+    }
+  };
+
   return (
     <section className={styles.homeSection}>
       <MenuBar />
       <div className={styles.container} onClick={handleContainerClick}>
         <div className={styles.iconsContainer}>
-          <div onDoubleClick={handleDoubleClick}>
+          <div onDoubleClick={() => handleDoubleClick("homeIcon")}>
             <div
               className={styles.desktopIcon}
               onClick={(e) => handleIconClick(e, "homeIcon")}
@@ -50,42 +88,59 @@ const Home = () => {
                 Mac OS Info Center
               </p>
             </div>
-            <PopUp show={showPopUp} onClose={closePopUp}>
-              <InfoMain />
-            </PopUp>
           </div>
-          <div
-            className={styles.desktopIcon}
-            onClick={(e) => handleIconClick(e, "algoVisualizerIcon")}
-          >
-            <img src={graphIcon} alt="algoVisualizerIcon" />
-            <p
-              className={
-                selectedIcon === "algoVisualizerIcon"
-                  ? styles.iconTextClicked
-                  : styles.iconText
-              }
+          <div onDoubleClick={() => handleDoubleClick("algoVisualizerIcon")}>
+            <div
+              className={styles.desktopIcon}
+              onClick={(e) => handleIconClick(e, "algoVisualizerIcon")}
             >
-              Algorithm Visualizer
-            </p>
+              <img src={graphIcon} alt="algoVisualizerIcon" />
+              <p
+                className={
+                  selectedIcon === "algoVisualizerIcon"
+                    ? styles.iconTextClicked
+                    : styles.iconText
+                }
+              >
+                Algorithm Visualizer
+              </p>
+            </div>
           </div>
-          <div
-            className={styles.desktopIcon}
-            onClick={(e) => handleIconClick(e, "algoVisualizerIcon2")}
-          >
-            <img src={graphIcon} alt="algoVisualizerIcon" />
-            <p
-              className={
-                selectedIcon === "algoVisualizerIcon2"
-                  ? styles.iconTextClicked
-                  : styles.iconText
-              }
+          <div onDoubleClick={() => handleDoubleClick("algoVisualizerIcon2")}>
+            <div
+              className={styles.desktopIcon}
+              onClick={(e) => handleIconClick(e, "algoVisualizerIcon2")}
             >
-              Algorithm Visualizer
-            </p>
+              <img src={graphIcon} alt="algoVisualizerIcon" />
+              <p
+                className={
+                  selectedIcon === "algoVisualizerIcon2"
+                    ? styles.iconTextClicked
+                    : styles.iconText
+                }
+              >
+                Algorithm Visualizer
+              </p>
+            </div>
           </div>
         </div>
       </div>
+      {/* Render all open windows */}
+      {Object.keys(openWindows).map((iconId, index) => {
+        const config = iconConfigs[iconId];
+        if (!config) return null;
+        return (
+          <PopUp
+            key={iconId}
+            show={openWindows[iconId]}
+            onClose={() => closePopUp(iconId)}
+            title={config.title}
+            offset={index * 30}
+          >
+            {renderWindowContent(config.component)}
+          </PopUp>
+        );
+      })}
     </section>
   );
 };

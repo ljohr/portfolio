@@ -23,6 +23,8 @@
   border-left: 2px solid white;
   border-bottom: 2px solid #b3b3b3;
   pointer-events: auto;
+  font-family: "DePixel", sans-serif;
+  user-select: none;
 }
 
 .header {
@@ -34,6 +36,7 @@
   height: 2.2rem;
   margin-bottom: 0.2rem;
   cursor: move;
+  font-family: "Sysfont", sans-serif;
 }
 
 .close-button {
@@ -135,6 +138,7 @@
   background: white;
   position: relative;
   border-top: 2px solid black;
+  user-select: text;
 }
 
 /* Scrollbar styling */
@@ -151,7 +155,6 @@
 
 .content::-webkit-scrollbar-thumb {
   background: #e0e0e0;
-  /* background-image: url("../assets/arrow.png"); */
   background-size: cover;
   border: 1px solid #000;
   border-radius: 0;
@@ -174,4 +177,5 @@
   border-right: 2px solid #b3b3b3;
   border-bottom: 2px solid #b3b3b3;
   z-index: 10;
+  pointer-events: auto;
 }

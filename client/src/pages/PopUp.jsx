@@ -1,49 +1,34 @@
 import { useState, useEffect } from "react";
 import { Rnd } from "react-rnd";
 import "./PopUp.css";
-import InfoMain from "./InfoMain";
-import Projects from "./Projects";
 import closeIcon from "../assets/close-button.png";
 import closeIconPressed from "../assets/close-button-pressed.png";
 
 // eslint-disable-next-line react/prop-types
-const PopUp = ({ show, onClose }) => {
-  const [activeComponent, setActiveComponent] = useState("InfoMain");
+const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
   const [isClosePressed, setIsClosePressed] = useState(false);
   const menuBarHeight = 40;
   const defaultWidth = 720;
   const defaultHeight = 480;
 
   const [position, setPosition] = useState({
-    x: window.innerWidth / 2 - defaultWidth / 2,
-    y: Math.max(menuBarHeight, window.innerHeight * 0.15),
+    x: window.innerWidth / 2 - defaultWidth / 2 + offset,
+    y: Math.max(menuBarHeight, window.innerHeight * 0.15) + offset,
     width: defaultWidth,
     height: defaultHeight,
   });
 
   useEffect(() => {
     if (!show) {
-      setActiveComponent("InfoMain");
       // Reset position and size when closed
       setPosition({
-        x: window.innerWidth / 2 - defaultWidth / 2,
-        y: Math.max(menuBarHeight, window.innerHeight * 0.15),
+        x: window.innerWidth / 2 - defaultWidth / 2 + offset,
+        y: Math.max(menuBarHeight, window.innerHeight * 0.15) + offset,
         width: defaultWidth,
         height: defaultHeight,
       });
     }
   }, [show]);
-
-  const renderComponent = () => {
-    switch (activeComponent) {
-      case "InfoMain":
-        return <InfoMain setActiveComponent={setActiveComponent} />;
-      case "Projects":
-        return <Projects />;
-      default:
-        return <InfoMain setActiveComponent={setActiveComponent} />;
-    }
-  };
 
   if (!show) {
     return null;
@@ -112,7 +97,7 @@ const PopUp = ({ show, onClose }) => {
                   <span></span>
                 </div>
               </div>
-              <span className="window-title">Info Center</span>
+              <span className="window-title">{title}</span>
               <div className="title-stripes">
                 <span></span>
                 <span></span>
@@ -131,7 +116,7 @@ const PopUp = ({ show, onClose }) => {
           </div>
           <div className="innerContainer">
             <div className="windowMetaData">1 item, 7.2 MB available</div>
-            <div className="content">{renderComponent()}</div>
+            <div className="content">{children}</div>
           </div>
         </div>
       </Rnd>
