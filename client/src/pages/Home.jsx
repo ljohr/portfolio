@@ -1,10 +1,7 @@
-// Home.js
 import { useState } from "react";
 import styles from "./Home.module.css";
 import MenuBar from "../components/MenuBar";
 import PopUp from "./PopUp";
-import InfoMain from "./InfoMain";
-import Projects from "./Projects";
 import graphIcon from "../assets/graph-icon.png";
 import infoCenterIcon from "../assets/info-center.png";
 
@@ -54,17 +51,6 @@ const Home = () => {
   const handleIconClick = (e, iconId) => {
     e.stopPropagation();
     setSelectedIcon(selectedIcon === iconId ? null : iconId);
-  };
-
-  const renderWindowContent = (componentName) => {
-    switch (componentName) {
-      case "InfoMain":
-        return <InfoMain />;
-      case "Projects":
-        return <Projects />;
-      default:
-        return <InfoMain />;
-    }
   };
 
   return (
@@ -136,9 +122,8 @@ const Home = () => {
             onClose={() => closePopUp(iconId)}
             title={config.title}
             offset={index * 30}
-          >
-            {renderWindowContent(config.component)}
-          </PopUp>
+            initialComponent={config.component}
+          />
         );
       })}
     </section>

@@ -35,8 +35,12 @@
   flex-shrink: 0;
   height: 2.2rem;
   margin-bottom: 0.2rem;
-  cursor: move;
+  cursor: grab;
   font-family: "Sysfont", sans-serif;
+}
+
+.header.grabbing {
+  cursor: grabbing;
 }
 
 .close-button {

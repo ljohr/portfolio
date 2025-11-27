@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
 import { Rnd } from "react-rnd";
 import "./PopUp.css";
+import InfoMain from "./InfoMain";
+import About from "./About";
+import Projects from "./Projects";
 import closeIcon from "../assets/close-button.png";
 import closeIconPressed from "../assets/close-button-pressed.png";
 
 // eslint-disable-next-line react/prop-types
-const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
+const PopUp = ({
+  show,
+  onClose,
+  title = "Window",
+  children,
+  offset = 0,
+  initialComponent = "InfoMain",
+}) => {
   const [isClosePressed, setIsClosePressed] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [activeComponent, setActiveComponent] = useState(initialComponent);
   const menuBarHeight = 40;
   const defaultWidth = 720;
   const defaultHeight = 480;
@@ -27,8 +39,23 @@ const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
         width: defaultWidth,
         height: defaultHeight,
       });
+      // Reset to initial component when closed
+      setActiveComponent(initialComponent);
     }
-  }, [show]);
+  }, [show, offset, initialComponent]);
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "InfoMain":
+        return <InfoMain setActiveComponent={setActiveComponent} />;
+      case "Projects":
+        return <Projects setActiveComponent={setActiveComponent} />;
+      case "About":
+        return <About setActiveComponent={setActiveComponent} />;
+      default:
+        return <InfoMain setActiveComponent={setActiveComponent} />;
+    }
+  };
 
   if (!show) {
     return null;
@@ -39,6 +66,8 @@ const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
       <Rnd
         position={{ x: position.x, y: position.y }}
         size={{ width: position.width, height: position.height }}
+        onDragStart={() => setIsDragging(true)}
+        onDragStop={() => setIsDragging(false)}
         onDrag={(e, d) => {
           setPosition((prev) => ({
             ...prev,
@@ -67,7 +96,7 @@ const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
         }}
       >
         <div className="modal">
-          <div className="header">
+          <div className={`header ${isDragging ? "grabbing" : ""}`}>
             <div className="title-bar">
               <button
                 className="close-button"
@@ -116,7 +145,7 @@ const PopUp = ({ show, onClose, title = "Window", children, offset = 0 }) => {
           </div>
           <div className="innerContainer">
             <div className="windowMetaData">1 item, 7.2 MB available</div>
-            <div className="content">{children}</div>
+            <div className="content">{children || renderComponent()}</div>
           </div>
         </div>
       </Rnd>
