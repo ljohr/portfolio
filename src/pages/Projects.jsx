@@ -1,25 +1,24 @@
-import styles from "./InfoMain.module.css";
+import { InfoSideBar } from "../components/InfoSideBar";
+import styles from "./InfoWindow.module.css";
 
 const Projects = ({ setActiveComponent }) => {
   return (
-    <section className={styles.aboutSection}>
-      <h1 className={styles.name}>Projects</h1>
-      <h4 className={styles.subtitle}>Software Engineer</h4>
-      <ul>
-        <li>About</li>
-        <li>
-          <button onClick={() => setActiveComponent("Projects")}>
-            Projects
-          </button>
-        </li>
-        <li>Experience</li>
-        <li>Resume</li>
-        <li>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </li>
-      </ul>
-    </section>
+    <div className={styles.infoContainer}>
+      <InfoSideBar setActiveComponent={setActiveComponent} />
+      <section className={styles.infoSection}>
+        <h1 className={styles.name}>Projects</h1>
+        <h4 className={styles.subtitle}>Software Engineer</h4>
+        <ul>
+          <li>About</li>
+          <li>
+            <button onClick={() => setActiveComponent("Projects")}>
+              Projects
+            </button>
+          </li>
+          <li>Experience</li>
+        </ul>
+      </section>
+    </div>
   );
 };
 

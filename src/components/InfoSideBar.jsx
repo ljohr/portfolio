@@ -1,11 +1,13 @@
-import styles from "./InfoWindow.module.css";
+import styles from "./InfoSideBar.module.css";
 
-const InfoMain = ({ setActiveComponent }) => {
+export const InfoSideBar = ({ setActiveComponent }) => {
   return (
-    <section className={styles.infoSection}>
-      <h1 className={styles.name}>Lilly Ohr</h1>
-      <h3 className={styles.subtitle}>Software Engineer</h3>
-
+    <section className={styles.InfoSideBar}>
+      <h3>
+        <button onClick={() => setActiveComponent("InfoMain")}>
+          Lilly Ohr
+        </button>
+      </h3>
       <ul>
         <li>
           <button onClick={() => setActiveComponent("About")}>About</button>
@@ -29,5 +31,3 @@ const InfoMain = ({ setActiveComponent }) => {
     </section>
   );
 };
-
-export default InfoMain;

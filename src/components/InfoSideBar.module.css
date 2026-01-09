@@ -1,0 +1,12 @@
+.InfoSideBar h3 {
+  font-family: "Sysfont", serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.InfoSideBar ul {
+  font-size: 1.1rem;
+  padding-left: 1rem;
+}

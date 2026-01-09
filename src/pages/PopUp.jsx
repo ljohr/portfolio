@@ -21,7 +21,7 @@ const PopUp = ({
   const [isDragging, setIsDragging] = useState(false);
   const [activeComponent, setActiveComponent] = useState(initialComponent);
   const menuBarHeight = 40;
-  const defaultWidth = 720;
+  const defaultWidth = 800;
   const defaultHeight = 480;
 
   const [position, setPosition] = useState({
