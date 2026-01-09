@@ -4,6 +4,7 @@ import "./PopUp.css";
 import InfoMain from "./InfoMain";
 import About from "./About";
 import Projects from "./Projects";
+import Experience from "./Experience";
 import closeIcon from "../assets/close-button.png";
 import closeIconPressed from "../assets/close-button-pressed.png";
 
@@ -52,6 +53,8 @@ const PopUp = ({
         return <Projects setActiveComponent={setActiveComponent} />;
       case "About":
         return <About setActiveComponent={setActiveComponent} />;
+      case "Experience":
+        return <Experience setActiveComponent={setActiveComponent} />;
       default:
         return <InfoMain setActiveComponent={setActiveComponent} />;
     }
@@ -62,7 +65,7 @@ const PopUp = ({
   }
 
   return (
-    <div className="popup-overlay">
+    <div className='popup-overlay'>
       <Rnd
         position={{ x: position.x, y: position.y }}
         size={{ width: position.width, height: position.height }}
@@ -86,20 +89,20 @@ const PopUp = ({
         }}
         minWidth={300}
         minHeight={200}
-        dragHandleClassName="header"
-        cancel="button"
+        dragHandleClassName='header'
+        cancel='button'
         enableResizing={{
           bottomRight: true,
         }}
         resizeHandleComponent={{
-          bottomRight: <div className="resize-handle"></div>,
+          bottomRight: <div className='resize-handle'></div>,
         }}
       >
-        <div className="modal">
+        <div className='modal'>
           <div className={`header ${isDragging ? "grabbing" : ""}`}>
-            <div className="title-bar">
+            <div className='title-bar'>
               <button
-                className="close-button"
+                className='close-button'
                 onClick={onClose}
                 onMouseDown={() => setIsClosePressed(true)}
                 onMouseUp={() => setIsClosePressed(false)}
@@ -107,11 +110,11 @@ const PopUp = ({
               >
                 <img
                   src={isClosePressed ? closeIconPressed : closeIcon}
-                  alt="closeIcon"
+                  alt='closeIcon'
                 />
               </button>
-              <div className="title-stripes-left">
-                <div className="title-stripes">
+              <div className='title-stripes-left'>
+                <div className='title-stripes'>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -126,8 +129,8 @@ const PopUp = ({
                   <span></span>
                 </div>
               </div>
-              <span className="window-title">{title}</span>
-              <div className="title-stripes">
+              <span className='window-title'>{title}</span>
+              <div className='title-stripes'>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -143,9 +146,9 @@ const PopUp = ({
               </div>
             </div>
           </div>
-          <div className="innerContainer">
-            <div className="windowMetaData">1 item, 7.2 MB available</div>
-            <div className="content">{children || renderComponent()}</div>
+          <div className='innerContainer'>
+            <div className='windowMetaData'>1 item, 7.2 MB available</div>
+            <div className='content'>{children || renderComponent()}</div>
           </div>
         </div>
       </Rnd>

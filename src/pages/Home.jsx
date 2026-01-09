@@ -7,7 +7,7 @@ import infoCenterIcon from "../assets/info-center.png";
 
 const Home = () => {
   // Track multiple open windows by ID
-  const [openWindows, setOpenWindows] = useState({});
+  const [openWindows, setOpenWindows] = useState({ homeIcon: true });
   const [selectedIcon, setSelectedIcon] = useState(null);
 
   // Define icon configurations
@@ -63,7 +63,7 @@ const Home = () => {
               className={styles.desktopIcon}
               onClick={(e) => handleIconClick(e, "homeIcon")}
             >
-              <img src={infoCenterIcon} alt="infoIcon" />
+              <img src={infoCenterIcon} alt='infoIcon' />
               <p
                 className={
                   selectedIcon === "homeIcon"
@@ -75,15 +75,15 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div onDoubleClick={() => handleDoubleClick("algoVisualizerIcon")}>
+          {/* <div onDoubleClick={() => handleDoubleClick('algoVisualizerIcon')}>
             <div
               className={styles.desktopIcon}
-              onClick={(e) => handleIconClick(e, "algoVisualizerIcon")}
+              onClick={(e) => handleIconClick(e, 'algoVisualizerIcon')}
             >
-              <img src={graphIcon} alt="algoVisualizerIcon" />
+              <img src={graphIcon} alt='algoVisualizerIcon' />
               <p
                 className={
-                  selectedIcon === "algoVisualizerIcon"
+                  selectedIcon === 'algoVisualizerIcon'
                     ? styles.iconTextClicked
                     : styles.iconText
                 }
@@ -92,15 +92,15 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div onDoubleClick={() => handleDoubleClick("algoVisualizerIcon2")}>
+          <div onDoubleClick={() => handleDoubleClick('algoVisualizerIcon2')}>
             <div
               className={styles.desktopIcon}
-              onClick={(e) => handleIconClick(e, "algoVisualizerIcon2")}
+              onClick={(e) => handleIconClick(e, 'algoVisualizerIcon2')}
             >
-              <img src={graphIcon} alt="algoVisualizerIcon" />
+              <img src={graphIcon} alt='algoVisualizerIcon' />
               <p
                 className={
-                  selectedIcon === "algoVisualizerIcon2"
+                  selectedIcon === 'algoVisualizerIcon2'
                     ? styles.iconTextClicked
                     : styles.iconText
                 }
@@ -108,7 +108,7 @@ const Home = () => {
                 Algorithm Visualizer
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Render all open windows */}

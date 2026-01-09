@@ -15,7 +15,11 @@ const InfoMain = ({ setActiveComponent }) => {
             Projects
           </button>
         </li>
-        <li>Experience</li>
+        <li>
+          <button onClick={() => setActiveComponent("Experience")}>
+            Experience
+          </button>
+        </li>
         <li>Resume</li>
         <li>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
