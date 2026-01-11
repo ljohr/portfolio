@@ -1,31 +1,29 @@
-import styles from "./InfoWindow.module.css";
+import common from "./InfoWindow.module.css";
+import styles from "./InfoMain.module.css";
 
 const InfoMain = ({ setActiveComponent }) => {
   return (
-    <section className={styles.infoSection}>
-      <h1 className={styles.name}>Lilly Ohr</h1>
-      <h3 className={styles.subtitle}>Software Engineer</h3>
+    <section className={styles.infoMain}>
+      <div className={styles.infoContent}>
+        <h1 className={styles.name}>Lilly Ohr</h1>
+        <h3 className={styles.subtitle}>Software Engineer</h3>
 
-      <ul>
-        <li>
-          <button onClick={() => setActiveComponent("About")}>About</button>
-        </li>
-        <li>
-          <button onClick={() => setActiveComponent("Experience")}>
-            Experience
-          </button>
-        </li>
-        <li>
-          <button onClick={() => setActiveComponent("Projects")}>
-            Projects
-          </button>
-        </li>
-        <li>
-          <button onClick={() => setActiveComponent("Projects")}>
-            Contact
-          </button>
-        </li>
-      </ul>
+        <ul className={styles.infoMainList}>
+          <li>
+            <button onClick={() => setActiveComponent("About")}>About</button>
+          </li>
+          <li>
+            <button onClick={() => setActiveComponent("Experience")}>
+              Experience
+            </button>
+          </li>
+          <li>
+            <button onClick={() => setActiveComponent("Contact")}>
+              Contact
+            </button>
+          </li>
+        </ul>
+      </div>
     </section>
   );
 };

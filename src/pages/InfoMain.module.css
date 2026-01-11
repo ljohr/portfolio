@@ -1,0 +1,42 @@
+.infoMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.infoContent {
+  text-align: left;
+}
+
+.name {
+  font-family: "Sysfont", serif;
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.02rem;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.infoMainList {
+  padding-left: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.infoMainList li {
+  margin-bottom: 0.3rem;
+}
+
+.infoMainList button {
+  padding: 0 0.3rem;
+}
+
+.infoMainList button:hover {
+  text-decoration: underline;
+}

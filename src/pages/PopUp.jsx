@@ -5,6 +5,7 @@ import InfoMain from "./InfoMain";
 import About from "./About";
 import Projects from "./Projects";
 import Experience from "./Experience";
+import Contact from "./Contact";
 import closeIcon from "../assets/close-button.png";
 import closeIconPressed from "../assets/close-button-pressed.png";
 
@@ -52,9 +53,11 @@ const PopUp = ({
       case "Projects":
         return <Projects setActiveComponent={setActiveComponent} />;
       case "About":
-        return <About setActiveComponent={setActiveComponent} />;
+          return <About setActiveComponent={setActiveComponent} />;
       case "Experience":
         return <Experience setActiveComponent={setActiveComponent} />;
+      case "Contact":
+        return <Contact setActiveComponent={setActiveComponent} />;
       default:
         return <InfoMain setActiveComponent={setActiveComponent} />;
     }

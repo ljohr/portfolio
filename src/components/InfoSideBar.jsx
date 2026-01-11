@@ -17,13 +17,13 @@ export const InfoSideBar = ({ setActiveComponent }) => {
             Experience
           </button>
         </li>
-        <li>
+        {/* <li>
           <button onClick={() => setActiveComponent("Projects")}>
             Projects
           </button>
-        </li>
+        </li> */}
         <li>
-          <button onClick={() => setActiveComponent("Projects")}>
+          <button onClick={() => setActiveComponent("Contact")}>
             Contact
           </button>
         </li>

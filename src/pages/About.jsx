@@ -1,13 +1,13 @@
-import styles from "./InfoWindow.module.css";
+import common from "./InfoWindow.module.css";
 
 import { InfoSideBar } from "../components/InfoSideBar";
 
 const About = ({ setActiveComponent }) => {
   return (
-    <div className={styles.infoContainer}>
+    <div className={common.infoContainer}>
       <InfoSideBar setActiveComponent={setActiveComponent} />
-      <section className={styles.infoSection}>
-        <h1 className={styles.name}>About</h1>
+      <section className={common.infoSection}>
+        <h1 className={common.name}>About</h1>
         <p>
           Hi, I&apos;m Lilly, a software engineer on the AI Product Team at{" "}
           <a href='https://www.floqast.com/' target='_blank'>

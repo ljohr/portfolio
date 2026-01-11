@@ -7,7 +7,6 @@ const Projects = ({ setActiveComponent }) => {
       <InfoSideBar setActiveComponent={setActiveComponent} />
       <section className={styles.infoSection}>
         <h1 className={styles.name}>Projects</h1>
-        <h4 className={styles.subtitle}>Software Engineer</h4>
         <ul>
           <li>About</li>
           <li>
