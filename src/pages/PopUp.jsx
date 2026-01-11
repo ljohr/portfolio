@@ -22,24 +22,30 @@ const PopUp = ({
   const [isDragging, setIsDragging] = useState(false);
   const [activeComponent, setActiveComponent] = useState(initialComponent);
   const menuBarHeight = 40;
-  const defaultWidth = 800;
-  const defaultHeight = 480;
+  const defaultWidth = Math.min(800, window.innerWidth * 0.9);
+  const defaultHeight = Math.min(480, window.innerHeight * 0.9);
 
   const [position, setPosition] = useState({
-    x: window.innerWidth / 2 - defaultWidth / 2 + offset,
-    y: Math.max(menuBarHeight, window.innerHeight * 0.15) + offset,
-    width: defaultWidth,
-    height: defaultHeight,
+    x:
+      window.innerWidth / 2 -
+      Math.min(defaultWidth, window.innerWidth * 0.9) / 2 +
+      offset,
+    y: Math.max(menuBarHeight, window.innerHeight * 0.1) + offset,
+    width: Math.min(defaultWidth, window.innerWidth * 0.9),
+    height: Math.min(defaultHeight, window.innerHeight * 0.9),
   });
 
   useEffect(() => {
     if (!show) {
       // Reset position and size when closed
       setPosition({
-        x: window.innerWidth / 2 - defaultWidth / 2 + offset,
-        y: Math.max(menuBarHeight, window.innerHeight * 0.15) + offset,
-        width: defaultWidth,
-        height: defaultHeight,
+        x:
+          window.innerWidth / 2 -
+          Math.min(defaultWidth, window.innerWidth * 0.9) / 2 +
+          offset,
+        y: Math.max(menuBarHeight, window.innerHeight * 0.1) + offset,
+        width: Math.min(defaultWidth, window.innerWidth * 0.9),
+        height: Math.min(defaultHeight, window.innerHeight * 0.9),
       });
       // Reset to initial component when closed
       setActiveComponent(initialComponent);
@@ -53,7 +59,7 @@ const PopUp = ({
       case "Projects":
         return <Projects setActiveComponent={setActiveComponent} />;
       case "About":
-          return <About setActiveComponent={setActiveComponent} />;
+        return <About setActiveComponent={setActiveComponent} />;
       case "Experience":
         return <Experience setActiveComponent={setActiveComponent} />;
       case "Contact":

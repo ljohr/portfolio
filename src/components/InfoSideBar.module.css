@@ -18,3 +18,9 @@
 .InfoSideBar ul button:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+  .InfoSideBar h3 { 
+    padding: 0.8rem 0;
+  }
+}
